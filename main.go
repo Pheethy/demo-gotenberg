@@ -20,7 +20,7 @@ func main() {
 	/*Init Usecase */
 	pdfUs := _pdf_usecase.NewPDFUseCase(pdfRepo)
 
-	/*Init Usecase */
+	/*Init Handler */
 	pdfHandler := _pdf_handler.NewPDFHandler(pdfUs)
 
 	/* Init Web Server */
