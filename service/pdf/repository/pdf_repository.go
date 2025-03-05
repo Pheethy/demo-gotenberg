@@ -36,6 +36,10 @@ func (p *pdfRepository) GeneratePDFFromURL(ctx context.Context, req *models.PDFF
 		"preferCssPageSize": "false", // ใช้ค่าที่กำหนดแทนที่จะใช้จาก CSS
 		"printBackground":   "true",  // พิมพ์พื้นหลัง
 		"landscape":         "false", // แนวตั้ง (portrait) ไม่ใช่แนวนอน
+		"marginTop":         "0",
+		"marginBottom":      "0",
+		"marginLeft":        "0",
+		"marginRight":       "0",
 	}
 
 	request := p.client.GetRestyClient().R().

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	client := request.New("http://gotenberg-service:3500", false)
+	client := request.New("http://localhost:3500", false)
 
 	/*Init Repository */
 	pdfRepo := _pdf_repository.NewPDFRepository(client)
