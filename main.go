@@ -31,6 +31,6 @@ func main() {
 	route.RegisterPDF(pdfHandler)
 
 	/* Start Server On Port 8080 จ้าาาาา*/
-	log.Println("🍫 Server demo pdf started on port 8080")
-	app.Run(":8080")
+	log.Println("🍫 Server demo pdf started on port 3600")
+	app.Run(":3600")
 }

@@ -23,8 +23,17 @@ func NewPDFRepository(client *request.Client) pdf.IPDFRepository {
 func (p *pdfRepository) GeneratePDFFromURL(ctx context.Context, req *models.PDFFile) error {
 	url := fmt.Sprintf("%s/forms/chromium/convert/url", p.client.GetHost())
 
+	headers := fmt.Sprintf(`{"Authorization": "%s"}`, req.Token)
+
 	payload := map[string]string{
-		"url": req.FrontendURL,
+		"url":               req.FrontendURL,
+		"waitDelay":         "5s",
+		"extraHttpHeaders":  headers,
+		"paperWidth":        "8.27",  // ความกว้าง A4 ในหน่วยนิ้ว (210mm)
+		"paperHeight":       "11.7",  // ความสูง A4 ในหน่วยนิ้ว (297mm)
+		"preferCssPageSize": "false", // ใช้ค่าที่กำหนดแทนที่จะใช้จาก CSS
+		"printBackground":   "true",  // พิมพ์พื้นหลัง
+		"landscape":         "false", // แนวตั้ง (portrait) ไม่ใช่แนวนอน
 	}
 
 	request := p.client.GetRestyClient().R().

@@ -15,6 +15,7 @@ type PDFFile struct {
 
 	Filename    string `json:"filename" binding:"required"`
 	FrontendURL string `json:"frontend_url" binding:"required"`
+	Token       string `json:"jwt_token"`
 }
 
 func (p *PDFFile) SetCreatedAt() {
