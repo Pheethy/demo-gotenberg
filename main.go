@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	client := request.New("http://localhost:3500", false)
+	client := request.New("http://gotenberg-service:3500", false)
 
 	/*Init Repository */
 	pdfRepo := _pdf_repository.NewPDFRepository(client)
@@ -30,7 +30,7 @@ func main() {
 	route := route.NewRoute(app)
 	route.RegisterPDF(pdfHandler)
 
-	/* Start Server On Port 8080 จ้าาาาา*/
+	/* Start Server On Port 3600 จ้าาาาา*/
 	log.Println("🍫 Server demo pdf started on port 3600")
 	app.Run(":3600")
 }
