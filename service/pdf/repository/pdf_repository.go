@@ -29,7 +29,7 @@ func (p *pdfRepository) GeneratePDFFromURL(ctx context.Context, req *models.PDFF
 
 	payload := map[string]string{
 		"url":               req.FrontendURL,
-		"waitDelay":         "2s",
+		"waitDelay":         "1s",
 		"extraHttpHeaders":  headers,
 		"paperWidth":        "8.27",  // ความกว้าง A4 ในหน่วยนิ้ว (210mm)
 		"paperHeight":       "11.7",  // ความสูง A4 ในหน่วยนิ้ว (297mm)

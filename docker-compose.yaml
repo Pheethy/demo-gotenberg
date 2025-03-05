@@ -1,0 +1,21 @@
+services:
+  demo-gotenberg:
+    build:
+      context: ./
+      dockerfile: Dockerfile # ตำแหน่ง docker file
+    container_name: demo-gotenberg # ตั้งชื่อ container
+    env_file: .env # กำหนด env
+    networks:
+      - default
+    ports:
+      - 3600:3600 #ฝั่งซ้ายคือ port localmachine /ขวาคือ portใน docker
+      - 3120:3100
+    image: demo-gotenberg # ตั้งชื่อ image
+    volumes:
+      - .:/go/src/git.pheethy.co.th/demo-gotenberg
+      - ./tmp:/go/src/git.pheethy.co.th/demo-gotenberg/tmp
+
+networks:
+  default:
+    external:
+      name: demo-gotenberg # ใช้ชื่อของเครือข่ายที่เราต้องการเชื่อมต่อ

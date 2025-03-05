@@ -8,11 +8,15 @@ import (
 	_pdf_usecase "demo-gotenberg/service/pdf/usecase"
 	"log"
 
+	"github.com/Pheethy/psql/helper"
+
 	"github.com/gin-gonic/gin"
 )
 
+var gotenbergHost = helper.GetENV("GOTENBERG_HOST", "")
+
 func main() {
-	client := request.New("http://localhost:3500", false)
+	client := request.New(gotenbergHost, false)
 
 	/*Init Repository */
 	pdfRepo := _pdf_repository.NewPDFRepository(client)
