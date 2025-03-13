@@ -8,7 +8,6 @@ import (
 	"demo-gotenberg/service/pdf"
 	"errors"
 	"fmt"
-	"time"
 )
 
 type pdfRepository struct {
@@ -22,14 +21,13 @@ func NewPDFRepository(client *request.Client) pdf.IPDFRepository {
 }
 
 func (p *pdfRepository) GeneratePDFFromURL(ctx context.Context, req *models.PDFFile) error {
-	p.client.GetRestyClient().SetTimeout(30 * time.Second)
 	url := fmt.Sprintf("%s/forms/chromium/convert/url", p.client.GetHost())
 
 	headers := fmt.Sprintf(`{"Authorization": "%s"}`, req.Token)
 
 	payload := map[string]string{
 		"url":               req.FrontendURL,
-		"waitDelay":         "1s",
+		"waitForExpression": "window.status === 'ready'",
 		"extraHttpHeaders":  headers,
 		"paperWidth":        "8.27",  // ความกว้าง A4 ในหน่วยนิ้ว (210mm)
 		"paperHeight":       "11.7",  // ความสูง A4 ในหน่วยนิ้ว (297mm)

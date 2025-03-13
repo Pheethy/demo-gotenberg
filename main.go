@@ -7,6 +7,7 @@ import (
 	_pdf_repository "demo-gotenberg/service/pdf/repository"
 	_pdf_usecase "demo-gotenberg/service/pdf/usecase"
 	"log"
+	"time"
 
 	"github.com/Pheethy/psql/helper"
 
@@ -17,6 +18,7 @@ var gotenbergHost = helper.GetENV("GOTENBERG_HOST", "")
 
 func main() {
 	client := request.New(gotenbergHost, false)
+	client.GetRestyClient().SetTimeout(30 * time.Second)
 
 	/*Init Repository */
 	pdfRepo := _pdf_repository.NewPDFRepository(client)
