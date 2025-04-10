@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gotenberg
-          image: gotenberg/gotenberg:7.10 # ถ้าต้องการเวอร์ชัน 8 เปลี่ยนเป็น gotenberg/gotenberg:8
+          image: gotenberg/gotenberg:8 # ถ้าต้องการเวอร์ชัน 8 เปลี่ยนเป็น gotenberg/gotenberg:8
           ports:
             - containerPort: 3000
           resources:
